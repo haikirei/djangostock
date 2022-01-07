@@ -8,7 +8,7 @@ def home(request):
     try:
         api = json.loads(api_request.content)
     except Exception as e:
-        api = "Error..."
+        api = "Error"
     return render(request, 'home.html', {'api':api})
 
 def about(request):
