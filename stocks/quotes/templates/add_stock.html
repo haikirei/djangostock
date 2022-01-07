@@ -2,5 +2,10 @@
 {% block content %}
 
 <h1>Add stock...</h1>
+<br/>
+
+{% for item in ticker %}
+    {{ item }}<br/>
+    {% endfor %}
 
 {% endblock %}
