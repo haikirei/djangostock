@@ -15,7 +15,6 @@
 <table class="table table-bordered table-hover">
   <thead class="thead-light">
   <tr>
-    <th scope="col">#</th>
     <th scope="col">Stock</th>
     <th scope="col">Stock Price</th>
     <th scope="col">Previous Close</th>
@@ -23,27 +22,27 @@
     <th scope="col">YTD Change</th>
     <th scope="col">52 Week High</th>
     <th scope="col">52 Week Low</th>
-    <th scope="col">Delete</th>
   </tr>
 </thead>
 <tbody>
 
-    {% for item in ticker %}
-      <tr>
-        <th scope="row">{{ item }}</th>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-        <td><a href="{% url 'delete' item.id %}">Delete Stock</a></td>
-      </tr>
-     {{ item }} - <a href="{% url 'delete' item.id %}">Delete Stock</a> <br/>
+{% if ticker %}
+
+    {% for list_item in output %}
+        <tr>
+            <th scope="row">{{ list_item.companyName }}</th>
+            <td>${{ list_item.latestPrice }}</td>
+            <td>${{ list_item.previousClose }}</td>
+            <td>%{{ list_item.marketCap }}</td>
+            <td>{{ list_item.ytdChange }}%</td>
+            <td>${{ list_item.week52High }}</td>
+            <td>${{ list_item.week52Low }}</td>
+        </tr>
     {% endfor %}
 
 </tbody>
 </table>
+
+{% endif %}
 
 {% endblock %}
